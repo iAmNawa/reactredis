@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import axios from '../redis-send.js';
-
 class DatabaseTester extends Component {
   constructor() {
     super();
@@ -13,13 +11,6 @@ class DatabaseTester extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('nameandage.json')
-    .then( response => {
-                console.log('sent')
-            } )
-            .catch( error => {
-                console.log('error')
-            } );
     console.log('nice job', this.state.name, this.state.age)
   }
 

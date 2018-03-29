@@ -1,21 +1,10 @@
-var redis = require("redis");
-var client = redis.createClient();
+var port = 34564;
+var app = require('express')();
 
-// if you'd like to select database 3, instead of 0 (default), call
-// client.select(3, function() { /* ... */ });
+app.use(require('compression')());
+app.use(require('body-parser').json());
+app.use(require('body-parser').urlencoded({ extended:true }));
 
-client.on("error", function (err) {
-    console.log("Error " + err);
-});
-
-client.on('connect', function() {
-  console.log('connected');
-});
-
-client.set('framework', 'PeeActJS', function(err, reply) {
-  console.log(reply);
-});
-
-client.get('framework', function(err, reply) {
-    console.log(reply);
+require('http').createServer(app).listen(port,function(){
+  console.log('server is running, on port', port)
 });
