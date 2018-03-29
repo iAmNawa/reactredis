@@ -5,8 +5,13 @@ class DatabaseTester extends Component {
     super();
     this.state = {
       name: "",
-      age: ""
+      age: 0
     }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('nice job', this.state.name, this.state.age)
   }
 
   changeTheName = (e) => {
@@ -27,10 +32,10 @@ class DatabaseTester extends Component {
             <input type="text" onChange={ this.changeTheName }></input>
           <label>Age:</label>
             <input type="number" onChange={ this.changeTheAge }></input>
-          <button>Send it</button>  
+          <button>Send it</button>
         </form>
-        <div>{this.state.name}</div>
-        <div>{this.state.age}</div>
+        <div>Name: {this.state.name}</div>
+        <div>Age: {this.state.age}</div>
       </div>
     )
   }
