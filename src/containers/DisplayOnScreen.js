@@ -24,8 +24,6 @@ class DisplayOnScreen extends Component {
   render() {
     return (
       <div>
-        <div>Hello</div>
-        <div>Hello again</div>
         <button onClick={this.getTheInfo}>DISPLAY THAT</button>
         <div>{this.state.information}</div>
       </div>

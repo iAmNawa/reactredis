@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import DatabaseTester from './containers/DatabaseTester';
+import DatabaseTester2 from './containers/DatabaseTester2';
 import DisplayOnScreen from './containers/DisplayOnScreen';
 
 class App extends Component {
@@ -15,7 +16,6 @@ class App extends Component {
         </header>
         {/*<DatabaseTester />*/}
         <DatabaseTester2 />
-        <DisplayOnScreen />
       </div>
     );
   }
