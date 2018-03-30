@@ -12,8 +12,7 @@ class DatabaseTester2 extends Component {
   async componentDidMount() {
     const res = await fetch('http://localhost:34564/userlist');
     const data = await res.json();
-    console.log(res)
-    console.log(data)
+    data.map(val => console.log(val))
   }
 
   render() {
