@@ -38,6 +38,18 @@ db.keys('hashes::*', (_, hashes)=>{
   })
 })
 
+setInterval(function(){
+  dbStuff = []
+  db.keys('hashes::*', (_, hashes)=>{
+    hashes.map( hash => {
+      db.hgetall(hash, (_, val)=> {
+        dbStuff.push(val)
+      })
+    })
+  })
+  console.log('checked db')
+ }, 3000);
+
 app.get('/userlist', (req,res) => {
   res.send(dbStuff)
 })
