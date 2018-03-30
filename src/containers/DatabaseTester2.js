@@ -2,13 +2,25 @@ import React, { Component } from 'react';
 
 class DatabaseTester2 extends Component {
   constructor() {
-    super()
+    super();
+    this.state = {
+      one: null,
+      two: null
+    }
   }
+
+  async componentDidMount() {
+    const res = await fetch('http://localhost:34564/userlist');
+    const data = res.json();
+    console.log(res)
+    console.log(data)
+  }
+
   render() {
     return (
       <div>
-       <div>Hello</div>
-       <div>Hello</div>
+       <div>{this.state.one}</div>
+       <div>{this.state.two}</div>
       </div>
     )
   }
