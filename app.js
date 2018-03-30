@@ -22,9 +22,22 @@ app.post("/user", function (req, res) {
  //console.log(req.body)
  var key = Date.now();
  //console.log(key)
- db.set(key, req.body.name, redis.print);
- //client.hmset([key, req.body.name, req.body.age], function (err, res) {});
+ //db.set(key, req.body.name, redis.print);
+ db.hmset(`hashes::${Date.now()}`,
+   'name', req.body.name,
+   'age', req.body.age)
+ console.log('sent')
 });
+
+app.get('/userget', (req,res) => {
+  db.keys('hashes::*', (_, hashes)=>{
+    hashes.map( hash => {
+      db.hgetall(hash, (_, val)=> {
+        console.log(val)
+      })
+    })
+  })
+})
 
 // The path will be params.name
 app.get('/user/:name', (req,res)=>{

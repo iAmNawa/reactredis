@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import DatabaseTester from './containers/DatabaseTester';
+import DisplayOnScreen from './containers/DisplayOnScreen';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <DatabaseTester />
+        <DisplayOnScreen />
       </div>
     );
   }
