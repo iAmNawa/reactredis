@@ -29,19 +29,21 @@ app.post("/user", function (req, res) {
  console.log('sent')
 });
 
-app.get('/userget', (req,res) => {
-  db.keys('hashes::*', (_, hashes)=>{
-    hashes.map( hash => {
-      db.hgetall(hash, (_, val)=> {
-        console.log(val)
-      })
+var dbStuff = []
+db.keys('hashes::*', (_, hashes)=>{
+  hashes.map( hash => {
+    db.hgetall(hash, (_, val)=> {
+      dbStuff.push(val)
     })
   })
 })
 
+app.get('/userlist', (req,res) => {
+  res.send(dbStuff)
+})
+
 // The path will be params.name
 app.get('/user/:name', (req,res)=>{
-  //console.log(req.params)
   res.send(req.params.name)
 })
 
@@ -74,7 +76,7 @@ require('http').createServer(app).listen(port,function(){
 //db.keys('hashes::*', (_, hashes)=>{
 //  hashes.map( hash => {
 //    db.hgetall(hash, (_, val)=> {
-//      console.log(val)
+//     console.log(val)
 //    })
 //  })
 //})

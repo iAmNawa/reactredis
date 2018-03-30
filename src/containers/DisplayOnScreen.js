@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 
 class DisplayOnScreen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      information: ""
+    }
+  }
 
   getTheInfo = (e) => {
-    console.log('working button')
+    var request = new XMLHttpRequest();
+    //request.addEventListener("load", letUsGetResults);
+    request.open('GET', 'http://localhost:34564/userlist');
+    request.responseType = 'text';
+
+    request.onload = function() {
+      //console.log(JSON.parse(request.response))
+      this.setState({information: request.response})
+    }.bind(this)
+    request.send();
   }
 
   render() {
@@ -12,7 +27,7 @@ class DisplayOnScreen extends Component {
         <div>Hello</div>
         <div>Hello again</div>
         <button onClick={this.getTheInfo}>DISPLAY THAT</button>
-        <div></div>
+        <div>{this.state.information}</div>
       </div>
     )
   }
