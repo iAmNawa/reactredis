@@ -39,7 +39,7 @@ class DatabaseTester extends Component {
     event.preventDefault();
     console.log('nice job', this.state.name, this.state.age)
 
-    var url = "http://localhost:34564/?name=paul&age=30";
+    var url = `http://localhost:34564/?name=${this.state.name}&age=${this.state.age}`;
 
     //var data = {};
     //data.name = this.state.name;
